@@ -1,0 +1,18 @@
+[
+  {
+    "userId": "U12345",
+    "problemsSolved": 42
+  },
+  {
+    "userId": "U67890",
+    "problemsSolved": 33
+  },
+  {
+    "userId": "U11223",
+    "problemsSolved": 28
+  },
+  {
+    "userId": "U33445",
+    "problemsSolved": 54
+  }
+]

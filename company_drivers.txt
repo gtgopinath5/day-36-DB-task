@@ -1,0 +1,26 @@
+[
+  {
+    "driveId": "D101",
+    "companyName": "TechCorp",
+    "date": "2020-10-20",
+    "participants": ["U12345", "U67890"]
+  },
+  {
+    "driveId": "D102",
+    "companyName": "InnovateX",
+    "date": "2020-10-25",
+    "participants": ["U11223", "U33445"]
+  },
+  {
+    "driveId": "D103",
+    "companyName": "FutureSoft",
+    "date": "2020-10-30",
+    "participants": ["U67890", "U33445"]
+  },
+  {
+    "driveId": "D104",
+    "companyName": "TechSolution",
+    "date": "2020-10-22",
+    "participants": ["U12345", "U11223"]
+  }
+]

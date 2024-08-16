@@ -1,0 +1,58 @@
+[
+  {
+    "userId": "U12345",
+    "name": "gopinath",
+    "email": "gopinath@gmail.com",
+    "codekataProblemsSolved": 42,
+    "attendance": [
+      { "date": "2024-10-15", "status": "present" },
+      { "date": "2024-10-16", "status": "absent" }
+    ],
+    "tasks": [
+      { "taskId": "T101", "submitted": true, "submissionDate": "2024-10-10" },
+      { "taskId": "T102", "submitted": false, "submissionDate": null }
+    ]
+  },
+  {
+    "userId": "U67890",
+    "name": "renuhaa",
+    "email": "renuhaa@gmail.com",
+    "codekataProblemsSolved": 33,
+    "attendance": [
+      { "date": "2024-10-15", "status": "absent" },
+      { "date": "2024-10-16", "status": "present" }
+    ],
+    "tasks": [
+      { "taskId": "T103", "submitted": true, "submissionDate": "2024-10-12" },
+      { "taskId": "T104", "submitted": true, "submissionDate": "2024-10-15" }
+    ]
+  },
+  {
+    "userId": "U11223",
+    "name": "thilagar",
+    "email": "thilagar@gmil.com",
+    "codekataProblemsSolved": 28,
+    "attendance": [
+      { "date": "2024-10-15", "status": "present" },
+      { "date": "2024-10-16", "status": "present" }
+    ],
+    "tasks": [
+      { "taskId": "T105", "submitted": false, "submissionDate": null },
+      { "taskId": "T106", "submitted": true, "submissionDate": "2024-10-14" }
+    ]
+  },
+  {
+    "userId": "U33445",
+    "name": "Dhanalakshmi",
+    "email": "Dhanalakshmi@gmail.com",
+    "codekataProblemsSolved": 54,
+    "attendance": [
+      { "date": "2024-10-15", "status": "present" },
+      { "date": "2024-10-16", "status": "present" }
+    ],
+    "tasks": [
+      { "taskId": "T107", "submitted": true, "submissionDate": "2024-10-16" },
+      { "taskId": "T108", "submitted": true, "submissionDate": "2024-10-13" }
+    ]
+  }
+]

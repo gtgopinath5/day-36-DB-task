@@ -1,0 +1,33 @@
+[
+  {
+    "userId": "U12345",
+    "date": "2020-10-15",
+    "status": "present"
+  },
+  {
+    "userId": "U12345",
+    "date": "2020-10-16",
+    "status": "absent"
+  },
+  {
+    "userId": "U67890",
+    "date": "2020-10-15",
+    "status": "absent"
+  },
+  {
+    "userId": "U67890",
+    "date": "2020-10-16",
+    "status": "present"
+  },
+  {
+    "userId": "U11223",
+    "date": "2020-10-16",
+    "status": "absent"
+  },
+  {
+    "userId": "U33445",
+    "date": "2020-10-22",
+    "status": "present"
+  }
+]
+

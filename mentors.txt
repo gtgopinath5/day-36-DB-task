@@ -1,0 +1,22 @@
+[
+  {
+    "mentorId": "M101",
+    "name": "durga",
+    "menteesCount": 20
+  },
+  {
+    "mentorId": "M102",
+    "name": "logesh",
+    "menteesCount": 12
+  },
+  {
+    "mentorId": "M103",
+    "name": "midhu",
+    "menteesCount": 18
+  },
+  {
+    "mentorId": "M104",
+    "name": "balu",
+    "menteesCount": 25
+  }
+]

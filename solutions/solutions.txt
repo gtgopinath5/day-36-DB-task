@@ -1,0 +1,156 @@
+1.Find all the topics and tasks which are taught in the month of October:**
+
+// Topics
+db.topics.find({ date: { $gte: new ISODate("2024-10-01"), $lt: new ISODate("2024-11-01") } })
+
+**Result:**
+[
+  { "topicId": "T101", "title": "Introduction to Algorithms", "date": "2024-10-01" },
+  { "topicId": "T102", "title": "Data Structures Basics", "date": "2024-10-05" },
+  { "topicId": "T103", "title": "Object-Oriented Programming", "date": "2024-10-10" },
+  { "topicId": "T104", "title": "Advanced Algorithms", "date": "2024-10-20" }
+]
+
+// Tasks
+db.tasks.find({ submissionDate: { $gte: new ISODate("2024-10-01"), $lt: new ISODate("2024-11-01") } })
+
+**Result:**
+[
+  { "taskId": "T101", "title": "Solve Sorting Algorithms", "submissionDate": "2024-10-10", "topicId": "T101" },
+  { "taskId": "T102", "title": "Implement Linked List", "submissionDate": "2024-10-12", "topicId": "T102" },
+  { "taskId": "T103", "title": "Build a Calculator", "submissionDate": "2024-10-15", "topicId": "T103" },
+  { "taskId": "T104", "title": "Create a To-Do List App", "submissionDate": "2024-10-20", "topicId": "T104" }
+]
+
+==============================================================================================
+2.Find all the company drives which appeared between 15 Oct 2020 and 31 Oct 2020:
+
+db.company_drives.find({
+  date: { $gte: new ISODate("2020-10-15"), $lte: new ISODate("2020-10-31") }
+})
+
+**Result:**
+
+[
+  { "driveId": "D101", "companyName": "TechCorp", "date": "2020-10-20", "participants": ["U12345", "U67890"] },
+  { "driveId": "D102", "companyName": "InnovateX", "date": "2020-10-25", "participants": ["U11223", "U33445"] },
+  { "driveId": "D103", "companyName": "FutureSoft", "date": "2020-10-30", "participants": ["U67890", "U33445"] }
+]
+=========================================================================================================
+3.Find all the company drives and students who appeared for the placement:
+
+db.company_drives.aggregate([
+  {
+    $lookup: {
+      from: "users",
+      localField: "participants",
+      foreignField: "userId",
+      as: "participantsDetails"
+    }
+  }
+])
+
+**Result:**
+
+[
+  {
+    "driveId": "D101",
+    "companyName": "TechCorp",
+    "date": "2020-10-20",
+    "participants": ["U12345", "U67890"],
+    "participantsDetails": [
+      { "userId": "U12345", "name": "gopinath", "email": "gopinath@gmail.com" },
+      { "userId": "U67890", "name": "renuhaa", "email": "renuhaa@gmail.com" }
+    ]
+  },
+  {
+    "driveId": "D102",
+    "companyName": "InnovateX",
+    "date": "2020-10-25",
+    "participants": ["U11223", "U33445"],
+    "participantsDetails": [
+      { "userId": "U11223", "name": "thilagar", "email": "thilagar@gmail.com" },
+      { "userId": "U33445", "name": "Dhanalakshmi", "email": "Dhanalakshmi@gmail.com" }
+    ]
+  },
+  {
+    "driveId": "D103",
+    "companyName": "FutureSoft",
+    "date": "2020-10-30",
+    "participants": ["U67890", "U33445"],
+    "participantsDetails": [
+      { "userId": "U67890", "name": "renuhaa", "email": "renuhaa@gmail.com" },
+      { "userId": "U33445", "name": "Dhanalakshmi", "email": "Dhanalakshmi@gmail.com" }
+    ]
+  }
+]
+===========================================================================================================
+4.Find the number of problems solved by each user in CodeKata:
+
+db.codekata.aggregate([
+  { $group: { _id: "$userId", totalProblemsSolved: { $sum: "$problemsSolved" } } }
+])
+
+**Result:**
+
+[
+  { "_id": "U12345", "totalProblemsSolved": 42 },
+  { "_id": "U67890", "totalProblemsSolved": 33 },
+  { "_id": "U11223", "totalProblemsSolved": 28 },
+  { "_id": "U33445", "totalProblemsSolved": 54 }
+]
+=====================================================================================================================
+5.Find all the mentors with more than 15 mentees:
+
+db.mentors.find({ menteesCount: { $gt: 15 } })
+
+**Result:**
+
+[
+  { "mentorId": "M101", "name": "durga", "menteesCount": 20 },
+  { "mentorId": "M103", "name": "midhu", "menteesCount": 18 },
+  { "mentorId": "M104", "name": "balu", "menteesCount": 25 }
+]
+=========================================================================================================================
+6.Find the number of users who were absent and did not submit tasks between 15 Oct 2020 and 31 Oct 2020:
+
+db.attendance.aggregate([
+  {
+    $match: {
+      date: { $gte: new ISODate("2020-10-15"), $lte: new ISODate("2020-10-31") },
+      status: "absent"
+    }
+  },
+  {
+    $lookup: {
+      from: "tasks",
+      let: { userId: "$userId" },
+      pipeline: [
+        { $match: { $expr: { $eq: ["$userId", "$$userId"] } } },
+        { $match: { submitted: false, submissionDate: { $gte: new ISODate("2020-10-15"), $lte: new ISODate("2020-10-31") } } }
+      ],
+      as: "unsubmittedTasks"
+    }
+  },
+  {
+    $match: {
+      "unsubmittedTasks.0": { $exists: true }
+    }
+  },
+  {
+    $group: {
+      _id: "$userId",
+      absentAndUnsubmittedCount: { $
+
+sum: 1 }
+    }
+  },
+  {
+    $count: "absentAndUnsubmittedCount"
+  }
+])
+
+**Result:**
+{
+  "absentAndUnsubmittedCount": 2
+}

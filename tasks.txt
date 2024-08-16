@@ -1,0 +1,30 @@
+[
+  {
+    "taskId": "T101",
+    "title": "Solve Sorting Algorithms",
+    "submissionDate": "2020-10-10",
+    "topicId": "T101",
+    "userId": "U12345"
+  },
+  {
+    "taskId": "T102",
+    "title": "Implement Linked List",
+    "submissionDate": null,
+    "topicId": "T102",
+    "userId": "U12345"
+  },
+  {
+    "taskId": "T103",
+    "title": "Build a Calculator",
+    "submissionDate": null,
+    "topicId": "T103",
+    "userId": "U67890"
+  },
+  {
+    "taskId": "T104",
+    "title": "Create a To-Do List App",
+    "submissionDate": null,
+    "topicId": "T104",
+    "userId": "U11223"
+  }
+]
